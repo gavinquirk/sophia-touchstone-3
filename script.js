@@ -6,6 +6,10 @@ if (form) {
   form.addEventListener("submit", function (event) {
     let isValid = true;
 
+    // Clear previous error messages
+    document.getElementById("nameError").textContent = "";
+    document.getElementById("emailError").textContent = "";
+
     // Name Validation
     const nameInput = document.getElementById("name");
 
@@ -31,6 +35,9 @@ if (form) {
     // Prevent form submission if validation fails
     if (!isValid) {
       event.preventDefault();
+    } else {
+      // Save name to localStorage
+      localStorage.setItem("bakeryUserName", nameInput.value.trim());
     }
   });
 }
@@ -71,4 +78,14 @@ function displayRandomSpecial() {
 const specialButton = document.getElementById("specialButton");
 if (specialButton) {
   specialButton.addEventListener("click", displayRandomSpecial);
+}
+
+// localStorage name fill
+
+// Pre-fill name field from localStorage if saved data exists
+const savedName = localStorage.getItem("bakeryUserName");
+const nameInput = document.getElementById("name");
+
+if (savedName && nameInput) {
+  nameInput.value = savedName;
 }

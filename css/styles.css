@@ -92,6 +92,11 @@ figure {
   margin: 0;
 }
 
+.error-message {
+  color: red;
+  display: block;
+}
+
 /* Products Page */
 img {
   max-width: 100%;
