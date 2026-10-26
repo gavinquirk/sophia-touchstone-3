@@ -2,36 +2,38 @@
 
 const form = document.querySelector("form");
 
-form.addEventListener("submit", function (event) {
-  let isValid = true;
+if (form) {
+  form.addEventListener("submit", function (event) {
+    let isValid = true;
 
-  // Name Validation
-  const nameInput = document.getElementById("name");
+    // Name Validation
+    const nameInput = document.getElementById("name");
 
-  if (nameInput.value.trim() === "") {
-    document.getElementById("nameError").textContent = "Name is required.";
-    isValid = false;
-  }
+    if (nameInput.value.trim() === "") {
+      document.getElementById("nameError").textContent = "Name is required.";
+      isValid = false;
+    }
 
-  // Email Validation
-  const emailInput = document.getElementById("email");
-  const emailValue = emailInput.value.trim();
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // Email Validation
+    const emailInput = document.getElementById("email");
+    const emailValue = emailInput.value.trim();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  if (emailValue === "") {
-    document.getElementById("emailError").textContent = "Email is required.";
-    isValid = false;
-  } else if (!emailPattern.test(emailValue)) {
-    document.getElementById("emailError").textContent =
-      "Please enter a valid email address.";
-    isValid = false;
-  }
+    if (emailValue === "") {
+      document.getElementById("emailError").textContent = "Email is required.";
+      isValid = false;
+    } else if (!emailPattern.test(emailValue)) {
+      document.getElementById("emailError").textContent =
+        "Please enter a valid email address.";
+      isValid = false;
+    }
 
-  // Prevent form submission if validation fails
-  if (!isValid) {
-    event.preventDefault();
-  }
-});
+    // Prevent form submission if validation fails
+    if (!isValid) {
+      event.preventDefault();
+    }
+  });
+}
 
 // Specials - Interactive Feature
 
